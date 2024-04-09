@@ -1,0 +1,6 @@
+# List Domain Admins
+> Get-ADGroupMember -Identity "Domain Admins" | Select-Object name
+
+# Check for inactive accounts aka accounts that havent logged in over 180 days
+$180Days = (Get-Date).AddDays(-180)
+Get-ADUser -Filter {LastLogonTimestamp -lt $180Days} -Properties LastLogonTimestamp | Select-Object Name,@{Name="LastLogonDate"; Expression={[DateTime]::FromFileTime($_.LastLogonTimestamp)}}
