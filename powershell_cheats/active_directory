@@ -1,5 +1,5 @@
 # List Domain Admins
-> Get-ADGroupMember -Identity "Domain Admins" | Select-Object name
+Get-ADGroupMember -Identity "Domain Admins" | Select-Object name
 
 # Check for inactive accounts aka accounts that havent logged in over 180 days
 $180Days = (Get-Date).AddDays(-180)
